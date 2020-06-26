@@ -7,34 +7,27 @@ import { createStore } from "redux";
 // variable declared after counter for this practice purpose
 
 // ACTION = describes what i'm doing
-
 const increment = () => {
   return {
-    type: "INCREMENT"
-  }
-};
+    type: "INCREMENT",
+    payload: 10
+  };
+}
 
 const decrement = () => {
   return {
-    type: "DECREMENT"
-  }
-}
-
-const multiply = () => {
-  return {
-    type: "MULTIPLY"
-  }
+    type: "DECREMENT",
+    payload: 1
+  };
 }
 
 // REDUCER = describe what your action transforms the state into next state
-const counter = (state = 0, action) => {
-  switch(action.type) {
+const counter = (state = 1, action) => {
+  switch (action.type) {
     case "INCREMENT":
-      return state + 2;
+      return state + action.payload;
     case "DECREMENT":
-      return state - 1;
-    case "MULTIPLY":
-      return state * 2;
+      return state - action.payload;
     default:
       return state;
   }
@@ -42,13 +35,13 @@ const counter = (state = 0, action) => {
 
 const store = createStore(counter);
 
+
 // this is to console log
 store.subscribe(() => console.log(store.getState()));
 
 // DISPATCH = where we execute the action
 store.dispatch(increment());
-store.dispatch(multiply());
-store.dispatch(increment());
+store.dispatch(decrement());
 store.dispatch(increment());
 
 function App() {
