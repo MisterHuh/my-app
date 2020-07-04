@@ -15,10 +15,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        hello
-      </header> */}
 
     <h1>Counter {counter} </h1>
     <button onClick={() => dispatch(increment(5))}>+</button>
